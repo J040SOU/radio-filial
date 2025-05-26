@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  filial:
+    build: .
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongo-filial
+    environment:
+      - MONGO_URL=mongodb://mongo-filial:27017/radio_filial
+
+  mongo-filial:
+    image: mongo:latest
+    container_name: mongo-filial
+    ports:
+      - '27018:27017'
+    volumes:
+      - filial-data:/data/db
+
+volumes:
+  filial-data:
