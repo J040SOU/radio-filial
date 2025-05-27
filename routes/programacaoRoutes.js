@@ -1,7 +1,4 @@
-const express = require('express');
-const router = express.Router();
-const ProgramacaoController = require('../controllers/ProgramacaoController');
-
-router.get('/', ProgramacaoController.getProgramacao);
-
-module.exports = router;
+const r = require('express').Router();
+const c = require('../controllers/ProgramacaoController');
+r.get('/', c.getProg);
+module.exports = r;
